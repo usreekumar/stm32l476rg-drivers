@@ -17,6 +17,9 @@ void delay( void );
 void SystemInit( void );
 void EXTI15_10_IRQHandler( void );
 
+GPIO_PinHandle led_pa5;
+GPIO_PinHandle pbutton_pc13;
+
 int main( void )
 {
 	test_setup();	
@@ -46,8 +49,6 @@ void test_setup( void )
 	#if (defined(_GPIO_OUTPUT_PUSHPULL_TEST_) || defined(_GPIO_INPUT_TEST_) || \
 		 defined(_GPIO_INTERRUPT_TEST_))
 
-		GPIO_PinHandle led_pa5;
-
 		led_pa5.pGPIOx 						= GPIOA;
 		led_pa5.GPIO_PinCfg.GPIO_PinNum 	= 5;
 		led_pa5.GPIO_PinCfg.GPIO_PinMode	= GPIO_MODE_OUT;
@@ -58,7 +59,6 @@ void test_setup( void )
 	#endif
 
 	#ifdef _GPIO_OUTPUT_OPENDRAIN_TEST_
-		GPIO_PinHandle led_pa5;
 
 		led_pa5.pGPIOx 						= GPIOA;
 		led_pa5.GPIO_PinCfg.GPIO_PinNum 	= GPIO_PIN_5;
@@ -72,7 +72,6 @@ void test_setup( void )
 	#endif		
 
 	#ifdef _GPIO_INPUT_TEST_
-		GPIO_PinHandle pbutton_pc13;
 
 		pbutton_pc13.pGPIOx 					= GPIOC;
 		pbutton_pc13.GPIO_PinCfg.GPIO_PinNum 	= GPIO_PIN_13;
@@ -85,7 +84,6 @@ void test_setup( void )
 	#endif
 
 	#ifdef _GPIO_INTERRUPT_TEST_
-		GPIO_PinHandle pbutton_pc13;
 
 		pbutton_pc13.pGPIOx 					= GPIOC;
 		pbutton_pc13.GPIO_PinCfg.GPIO_PinNum 	= GPIO_PIN_13;

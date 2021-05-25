@@ -5,7 +5,7 @@
  *	@author		Umamaheswaran
  */
 
-// #define _GPIO_OUTPUT_PUSHPULL_TEST_
+#define _GPIO_OUTPUT_PUSHPULL_TEST_
 // #define _GPIO_OUTPUT_OPENDRAIN_TEST_
 // #define _GPIO_INPUT_TEST_
-#define _GPIO_INTERRUPT_TEST_
+// #define _GPIO_INTERRUPT_TEST_
