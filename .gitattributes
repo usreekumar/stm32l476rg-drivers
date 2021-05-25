@@ -1,0 +1,3 @@
+  
+# This file and the line below were added to prevent Github from wrongly classifying some .h file as C++
+*.h linguist-language=C
