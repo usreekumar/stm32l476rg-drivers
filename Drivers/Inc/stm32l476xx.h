@@ -213,6 +213,38 @@ typedef struct
 /* Peripheral base address of EXTI typecasted to EXTI_TypeDef */
 #define SYSCFG ( (SYSCFG_TypeDef*)SYSCFG_BASEADDR )
 
+/* Register definition structure for SPI registers */
+typedef struct
+{
+  __VO uint32_t CR1;         /*SPI Control register 1,      Address offset: 0x00 */
+  __VO uint32_t CR2;         /*SPI Control register 2,      Address offset: 0x04 */
+  __VO uint32_t SR;          /*SPI Status register,         Address offset: 0x08 */
+  __VO uint32_t DR;          /*SPI data register,           Address offset: 0x0C */
+  __VO uint32_t CRCPR;       /*SPI CRC polynomial register, Address offset: 0x10 */
+  __VO uint32_t RXCRCR;      /*SPI Rx CRC register,         Address offset: 0x14 */
+  __VO uint32_t TXCRCR;      /*SPI Tx CRC register,         Address offset: 0x18 */
+} SPI_TypeDef;
+
+/* Peripheral base address of SPI typecasted to SPI_TypeDef */
+#define SPI1 	( (SPI_TypeDef*)SPI1_BASEADDR )
+#define SPI2  ( (SPI_TypeDef*)SPI2_BASEADDR )
+#define SPI3  ( (SPI_TypeDef*)SPI3_BASEADDR )
+
+/*SPI register bit location*/
+#define SPI_CR1_POS_CPHA				0U
+#define SPI_CR1_POS_CPOL				1U
+#define SPI_CR1_POS_MSTR				2U
+#define SPI_CR1_POS_BR 					3U
+#define SPI_CR1_POS_SPE					6U
+#define SPI_CR1_POS_LSBFIRST		7U
+#define SPI_CR1_POS_SSI 				8U
+#define SPI_CR1_POS_SSM					9U
+#define SPI_CR1_POS_RXONLY			10U
+#define SPI_CR1_POS_BIDIOE 			14U
+#define SPI_CR1_POS_BIDIMODE		15U
+
+#define SPI_CR2_POS_DS					8U	
+
 /*--------------CLOCK ENABLE MACROS--------------------*/
 
 /* Clock enable macros for SYSCFG peripheral */
@@ -325,6 +357,26 @@ typedef struct
 								( RCC->AHB2RSTR &= ~(1U << 7));	\
 							 }									\
 							 while(0) 
+
+/*--------------SPI RESET MACROS--------------------*/
+
+#define SPI1_RST()			do{									\
+								( RCC->APB2RSTR |= 	(1U << 12));	\
+								( RCC->APB2RSTR &= ~(1U << 12));	\
+							}									\
+							while(0)
+
+#define SPI2_RST()			do{									\
+								( RCC->APB1RSTR1 |= 	(1U << 14));	\
+								( RCC->APB1RSTR1 &= ~(1U << 14));	\
+							}									\
+							while(0)
+
+#define SPI3_RST()			do{									\
+								( RCC->APB1RSTR1 |= 	(1U << 15));	\
+								( RCC->APB1RSTR1 &= ~(1U << 15));	\
+							}									\
+							while(0)
 
 /*IRQ numbers for various EXTI lines*/
 #define EXTI0_IRQn		6U
